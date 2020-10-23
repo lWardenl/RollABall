@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float ForceMultiplier;
     public float Jump;
+    
 
     private float _moveHorizontal;
     private float _moveVertical;
@@ -17,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
             _rigidbody.AddForce(0f, Jump, 0f, ForceMode.Impulse);
         }
     }
+ 
+  
     private void FixedUpdate()
     {
         _moveHorizontal = Input.GetAxis("Horizontal") * ForceMultiplier;
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
         if (other.transform.CompareTag("Coin"))
         {
             GameObject.Destroy(other.gameObject);
+        
         }
     }
 }
