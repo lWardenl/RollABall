@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Score : MonoBehaviour
+public class UI : MonoBehaviour
 {
     private int Count;
 
     public TextMeshProUGUI countText;
+
+    public GameObject winTextObject;
+
 
 
 
@@ -15,12 +18,16 @@ public class Score : MonoBehaviour
     {
         Count = 0;
         SetCountText();
+        winTextObject.SetActive(false);
     }
 
     void SetCountText()
     {
         countText.text = "Count: " + Count.ToString();
-        
+        if (Count >= 3)
+        {
+            winTextObject.SetActive(true);
+        }
     }
         
 
